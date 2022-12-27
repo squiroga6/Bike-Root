@@ -1,5 +1,6 @@
 .vscode/
 credentials.json
 token.json
+secrets.yml
 data/
 __pycache__/
