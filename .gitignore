@@ -1,0 +1,5 @@
+.vscode/
+credentials.json
+token.json
+data/
+__pycache__/
