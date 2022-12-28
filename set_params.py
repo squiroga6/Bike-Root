@@ -17,6 +17,9 @@ try:
 
     SLACK_BOT_TOKEN = params['SLACK_BOT_TOKEN']
     CHANNEL_ID = params['CHANNEL_ID']
+    SLACK_SIGNING_SECRET = params['SLACK_SIGNING_SECRET']
+    PORT = params['PORT']
+    SLACK_APP_TOKEN = params['SLACK_APP_TOKEN']    
 
 except:
     # # If running on the server this will throw an error;
