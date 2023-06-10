@@ -60,6 +60,19 @@ def handle_member_joined_channel(event_data):
             \n{onboard_url}
             """
 
+        elif channel_name == 'scheduling':
+
+            greeting = f"""
+Hello {user_name}, welcome to Bike Root's Schedule Channel for Volunteers!\n
+Scheduling is now self-service, below are the steps to add or modify your hours\n
+
+1) Navigate to this Google Drive sheet: https://docs.google.com/spreadsheets/d/1-Y9BLhKbL69BBC0UP3Oacw_cIJJRGMqukfxHr1KTPN0/edit#gid=0
+2) Delete/Add your name for the hours you will be unavailable. For example if I usually volunteer on Monday from 8-9am, then my name would be in cells E2:E3, so I would add/remove my name from cells E2 and E3
+3) When you are available to volunteer again, or would like to change your availability, re-enter your name into the corresponding half hour slots. Changes to this sheet will take 1-5 mins to be reflected on to the bikeroot.ca site.\n 
+You'll need access to the volunteer google drive, the webpage will give you an option to request access if you don't already have it\n
+-if anything's unclear or could use improvement, feel free to message in this channel
+"""            
+
         else:
 
             greeting = f"""
