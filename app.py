@@ -24,10 +24,8 @@ ssl_context = ssl.create_default_context(cafile=certifi.where())
 client = slack.WebClient(token=os.environ['SLACK_BOT_TOKEN'], ssl=ssl_context)
 BOT_ID = client.api_call("auth.test")['user_id']
 
-# Set up the message you will send to the new users who join a channel.
-#  Initialize an empty set that will keep track of the welcomed users.
-GREETING_MESSAGE = "Hello {user_name}, welcome to the {channel_name} " \
-                   "channel! We're excited to have you here."
+onboard_url = "https://drive.google.com/file/d/1lWYhXmqB1V_-HW-gw94Q7FhZ90HPWAUz/view?usp=drive_link"
+
 welcomed_users = set()
 
 # Set up an event listener. It will listen to the member_joined_channel event.
@@ -46,8 +44,27 @@ def handle_member_joined_channel(event_data):
         channel_info = client.conversations_info(channel=channel_id)
         channel_name = channel_info['channel']['name']
 
-        greeting = GREETING_MESSAGE.format(user_name=user_name,
-                                          channel_name=channel_name)
+        if channel_name == 'general':
+
+            greeting = f"""
+            Hello {user_name}, welcome to the Bike Root's Slack Channel! We're excited to have you here.
+            \nYou can find more information about us at bikeroot.ca . There, you will find our latest schedule. 
+            Please note that we are a volunteer-run community bike shop, and therefore our shop is open whenever our volunteers are avaiable. 
+            """                     
+
+        elif channel_name == 'volunteer_chat':
+
+            greeting = f"""
+            Hello {user_name}, welcome to Bike Root's Volunteer Channel!
+            \nThis is a private channel for Bike Root volunteers. Please review our onboarding guide through the link below:
+            \n{onboard_url}
+            """
+
+        else:
+
+            greeting = f"""
+            Hello {user_name}, welcome to the {channel_name} "channel! We're excited to have you here.
+            """
 
         client.chat_postMessage(channel=channel_id, text=greeting)
 
