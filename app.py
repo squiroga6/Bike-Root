@@ -1,3 +1,5 @@
+# Adapted from https://www.makeuseof.com/python-slack-bot-welcome-build/
+
 import slack_sdk as slack
 import os
 from pathlib import Path
@@ -82,4 +84,4 @@ You'll need access to the volunteer google drive, the webpage will give you an o
         client.chat_postMessage(channel=channel_id, text=greeting)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)        
+    app.run(debug=False, port=5000)        
