@@ -4,3 +4,4 @@ token.json
 secrets.yml
 data/
 __pycache__/
+.env
